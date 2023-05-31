@@ -1,0 +1,41 @@
+Etape 1:
+    le index.php dans l'arbre de dossier du site qui renvoie vers le controlleur
+
+Etape 2:
+    le controller, il va servir a traiter les données (en particulier le $SESSION) puis appel
+    le view
+
+Etape 3:
+    la view va gérer la page, c'est là qu'est la partie graphqiue
+    elle appel cepandant le template statique
+
+Etape 4:
+    le template, il bouge pas, on touche pas. (si si besoin de modification sur une partie
+    statique du site)
+
+
+=> pour rediriger vers une page on appel du coup TOUJOURS et vraiment TOUJOURS!!!! le index.php
+correspondant à la page voulou (nous ne somme pas obligé de spécifier que c'est le fichier
+index.php car c'est lui qui est appelé automatiquement quand on redirige vers un dossier)
+
+Ne pas oublier: toujours repasser par l'origine via $origine
+
+exemple:
+    $origine (affiche la page d'accueil)
+    $origine."infos/contacts" (affiche la page contact)
+
+Cependant!
+    $origine."infos" ne contient pas de fichier index.php, le navigateur affiche par
+    défaut une page avec l'arborescence. C'est pas beau! Mais ça j'y travail via .htaccess
+    afin de rediriger automatiquement vers une url existante!
+    ($origine."infos" renverras sur $origine."infos/contacts" car je l'ai voulu)
+
+
+Conclusion:
+on appel un fichier index.php dans l'arborescence qui appelera un fichier controlleur adapté
+qui préparera les variables puis appelera un view qui appliquera le template!
+Pour les url on utilise QUE les index.php dans l'arborescence.
+
+Tout appel à .mvc se fait avec des include et des require!
+
+. <- final
